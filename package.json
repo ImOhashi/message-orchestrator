@@ -6,7 +6,10 @@
   "author": "ImOhashi <leonardoohashi.mkt@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.ts"
+    "dev": "nodemon src/server.ts",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
