@@ -1,2 +1,2 @@
-import { Logger } from "./logger";
-import { morganMiddleware } from "./morgan";
+export { Logger } from "./logger";
+export { morganMiddleware } from "./morgan";
