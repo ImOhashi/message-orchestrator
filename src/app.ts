@@ -1,6 +1,7 @@
 import express from "express";
 import { config } from "dotenv";
 
+import router from "./routes";
 import { morganMiddleware } from "./utils";
 
 class App {
@@ -22,6 +23,7 @@ class App {
         extended: false,
       })
     );
+    this.app.use(router);
   }
 }
 
