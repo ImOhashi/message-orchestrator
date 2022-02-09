@@ -11,13 +11,15 @@ class CacheImplementation {
     });
   }
 
-  async get(key: KeyType): Promise<any> {
+  async get(key: string): Promise<any> {
     const value: string = await this.redis.get(key);
 
     return value ? JSON.parse(value) : null;
   }
 
-  set(key: KeyType, value: ValueType, timeExp: string | any): Promise<"OK"> {
-      return this.redis.set(key, value, timeExp);
+  set(key: string, value: any): Promise<"OK"> {
+    return this.redis.set(key, value);
   }
 }
+
+export default new CacheImplementation();
