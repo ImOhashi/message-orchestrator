@@ -4,11 +4,15 @@ import { Message } from "../model";
 import cache from "../cache/cache";
 
 class MessageController {
-  reciveMessage(req: Request, res: Response) {
+  public reciveMessage(req: Request, res: Response): Response {
     if (req.body) {
       const sendedMessage = Message.newMessage({ ...req.body });
 
-      cache.set("last", sendedMessage)
+      cache.set("last", Message.toString(sendedMessage));
+
+      return res.send("OK");
     }
   }
 }
+
+export default new MessageController();

@@ -1,6 +1,7 @@
 import { Request, Response, Router } from "express";
 
 import { Details } from "../interfaces";
+import message from "../controllers/messageController";
 
 class Routes {
   public router: Router = Router();
@@ -10,16 +11,18 @@ class Routes {
   }
 
   private setRoutes(): void {
-    this.router.get("/details", (req: Request, res: Response) => {
-      const details: Details = {
-        version: process.env.npm_package_version,
-        author: process.env.npm_package_author_name,
-        email: process.env.npm_package_author_email,
-        repository_url: process.env.npm_package_repository_url,
-      };
+    this.router
+      .get("/details", (req: Request, res: Response) => {
+        const details: Details = {
+          version: process.env.npm_package_version,
+          author: process.env.npm_package_author_name,
+          email: process.env.npm_package_author_email,
+          repository_url: process.env.npm_package_repository_url,
+        };
 
-      return res.status(200).json(details);
-    });
+        return res.status(200).json(details);
+      })
+      .post("/", message.reciveMessage);
   }
 }
 
