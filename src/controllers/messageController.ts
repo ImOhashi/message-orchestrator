@@ -11,6 +11,8 @@ class MessageController {
       cache.set("last", Message.toString(sendedMessage));
 
       return res.send("OK");
+    } else {
+      
     }
   }
 }
