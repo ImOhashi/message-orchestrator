@@ -6,7 +6,7 @@ import { Logger } from "../utils";
 import { MessageControllerException } from "../errors";
 
 class MessageController {
-  public reciveMessage(req: Request, res: Response): Response {
+  public publishMessage(req: Request, res: Response): Response {
     if (req.body) {
       const sendedMessage = Message.newMessage({ ...req.body });
 

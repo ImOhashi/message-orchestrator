@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
 
 import { Details } from "../interfaces";
-import message from "../controllers/messageController";
+import messageRouter from "./messageRouter";
 
 class Routes {
   public router: Router = Router();
@@ -22,7 +22,7 @@ class Routes {
 
         return res.status(200).json(details);
       })
-      .post("/", message.reciveMessage);
+      .use("/message-orchestrator", messageRouter);
   }
 }
 
