@@ -1,4 +1,5 @@
-import redis, { Redis, ValueType } from "ioredis";
+import redis, { Redis } from "ioredis";
+import { Logger } from "../utils";
 
 class CacheImplementation {
   private redis: Redis;
@@ -13,11 +14,15 @@ class CacheImplementation {
 
   async get(key: string): Promise<any> {
     const value: string = await this.redis.get(key);
+    const parsedValue = value ? JSON.parse(value) : null;
 
-    return value ? JSON.parse(value) : null;
+    Logger.info(`get a cache value: ${parsedValue}`);
+
+    return parsedValue;
   }
 
   set(key: string, value: any): Promise<"OK"> {
+    Logger.info(`set cache value: ${value}`);
     return this.redis.set(key, value);
   }
 }

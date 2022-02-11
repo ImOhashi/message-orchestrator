@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 
 import { Message } from "../model";
 import cache from "../cache/cache";
+import { Logger } from "../utils";
+import { MessageControllerException } from "../errors";
 
 class MessageController {
   public reciveMessage(req: Request, res: Response): Response {
@@ -12,7 +14,8 @@ class MessageController {
 
       return res.send("OK");
     } else {
-      
+      Logger.error("Invalid request body");
+      throw new MessageControllerException("Invalid request body");
     }
   }
 }
