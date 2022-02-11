@@ -8,7 +8,7 @@ class App {
   public app: express.Application = express();
 
   constructor() {
-    config();
+    if (process.env.NODE_ENV === "development") config();
 
     this.middlewares();
   }
