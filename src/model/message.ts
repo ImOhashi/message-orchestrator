@@ -19,9 +19,9 @@ export class Message {
     message: string;
   }): Message {
     const createdMessage = new Message(
-      newMessage.address,
-      newMessage.name,
-      newMessage.message
+      newMessage.address ? newMessage.address : null,
+      newMessage.name ? newMessage.name : null,
+      newMessage.message ? newMessage.message : null
     );
 
     Object.keys(createdMessage).forEach((key) => {
