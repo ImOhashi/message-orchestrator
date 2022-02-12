@@ -1,4 +1,4 @@
-export interface Details {
+export interface IDetails {
   version: string,
   author: string,
   email: string,

@@ -39,10 +39,6 @@ export class Message {
   }
 
   public static toString(message: Message): string {
-    return `{
-      address: ${message.address}
-      name: ${message.name},
-      message: ${message.message}
-    }`;
+    return `{address: ${message.address}, name: ${message.name}, message: ${message.message}}`;
   }
 }
