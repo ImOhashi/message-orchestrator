@@ -10,7 +10,8 @@ class MessageRouter {
   }
 
   private setRoutes(): void {
-    this.router.post("/publish", message.publishMessage)
+    this.router
+      .post("/publish", message.publishMessage)
       .get("/last", message.getLastMessage);
   }
 }
