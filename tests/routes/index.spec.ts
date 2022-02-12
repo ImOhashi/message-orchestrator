@@ -1,11 +1,11 @@
 import supertest from "supertest";
 
 import app from "../../src/app";
-import { Details } from "../../src/interfaces";
+import { IDetails } from "../../src/interfaces";
 
 describe("Route /details", () => {
   test("GET - /details", async () => {
-    const expectedBody: Details = {
+    const expectedBody: IDetails = {
       version: process.env.npm_package_version,
       author: process.env.npm_package_author_name,
       email: process.env.npm_package_author_email,
