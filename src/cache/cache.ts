@@ -1,6 +1,5 @@
 import redis, { Redis } from "ioredis";
 
-import { Message } from "../model";
 import { Logger } from "../utils";
 
 class CacheImplementation {
@@ -17,7 +16,7 @@ class CacheImplementation {
   async get(key: string): Promise<any> {
     const value: string = await this.redis.get(key);
 
-    if(value) {
+    if (value) {
       Logger.info(`get a cache value: ${value}`);
       return value;
     }
