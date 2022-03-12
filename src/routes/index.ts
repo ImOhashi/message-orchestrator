@@ -13,7 +13,7 @@ class Routes {
 
   private setRoutes(): void {
     this.router
-      .get("/details", (req: Request, res: Response) => {
+      .use("/details", (req: Request, res: Response) => {
         const details: IDetails = {
           version: process.env.npm_package_version,
           author: process.env.npm_package_author_name,
