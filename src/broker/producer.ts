@@ -5,7 +5,7 @@ import { KafkaException } from "../errors";
 
 class KafkaProducer {
   private kafka: Kafka;
-  private producer: Producer;
+  public producer: Producer;
 
   constructor() {
     this.kafka = new Kafka({
@@ -28,3 +28,5 @@ class KafkaProducer {
     });
   }
 }
+
+export default new KafkaProducer();
