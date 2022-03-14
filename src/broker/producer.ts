@@ -24,7 +24,7 @@ class KafkaProducer {
     this.producer
       .connect()
       .then(() => {
-        Logger.info("Kafka brokker is connected!");
+        Logger.info("Kafka broker is connected!");
       })
       .catch((err) => {
         Logger.error(`Could not connect to broker.\n${err}`);
