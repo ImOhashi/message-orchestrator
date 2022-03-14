@@ -3,12 +3,15 @@ import { config } from "dotenv";
 
 import router from "./routes";
 import { morganMiddleware } from "./utils";
+import kafka from "./broker/producer";
 
 class App {
   public app: express.Application = express();
 
   constructor() {
     if (process.env.NODE_ENV === "development") config();
+
+    kafka.connect();
 
     this.middlewares();
   }

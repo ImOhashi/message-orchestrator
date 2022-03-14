@@ -4,10 +4,10 @@ import { Logger } from "../utils";
 import { KafkaException } from "../errors";
 
 class KafkaProducer {
-  private kafka: Kafka;
-  public producer: Producer;
+  private static kafka: Kafka;
+  public static producer: Producer;
 
-  constructor() {
+  public static connect(): void {
     this.kafka = new Kafka({
       clientId: process.env.KAFKA_CLIENT_ID,
       brokers: [process.env.KAFKA_BROKER],
@@ -19,14 +19,18 @@ class KafkaProducer {
     });
 
     this.producer = this.kafka.producer();
-  }
 
-  public async connect(): Promise<void | KafkaException> {
     Logger.info("Trying to connect to Kafka Broker");
-    await this.producer.connect().catch((err) => {
-      throw new KafkaException(`Could not connect to broker.\n${err}`);
-    });
+    this.producer
+      .connect()
+      .then(() => {
+        Logger.info("Kafka brokker is connected!");
+      })
+      .catch((err) => {
+        Logger.error(`Could not connect to broker.\n${err}`);
+        throw new KafkaException(`Could not connect to broker.\n${err}`);
+      });
   }
 }
 
-export default new KafkaProducer();
+export default KafkaProducer;
