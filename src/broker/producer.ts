@@ -20,7 +20,7 @@ class KafkaProducer {
 
     this.producer = this.kafka.producer();
 
-    Logger.info("Trying to connect to Kafka Broker");
+    Logger.info("Trying to connect to Kafka broker");
     this.producer
       .connect()
       .then(() => {
