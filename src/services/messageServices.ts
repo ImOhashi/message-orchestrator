@@ -1,4 +1,3 @@
-import { Message } from "../model";
 import { IMessageServices } from "../interfaces";
 import cache from "../cache/cache";
 
