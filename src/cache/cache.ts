@@ -1,6 +1,5 @@
 import redis, { Redis } from "ioredis";
-
-import { Logger } from "../utils";
+import { logger } from "cyber-logger";
 
 class CacheImplementation {
   private redis: Redis;
@@ -17,16 +16,16 @@ class CacheImplementation {
     const value: string = await this.redis.get(key);
 
     if (value) {
-      Logger.info(`get a cache value: ${value}`);
+      logger.info(`get a cache value: ${value}`);
       return value;
     }
 
-    Logger.info(`Don't have messages`);
+    logger.info(`Don't have messages`);
     return null;
   }
 
   set(key: string, value: any): Promise<"OK"> {
-    Logger.info(`set cache value: ${value}`);
+    logger.info(`set cache value: ${value}`);
     return this.redis.set(key, value);
   }
 }

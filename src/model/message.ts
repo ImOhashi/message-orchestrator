@@ -1,4 +1,5 @@
-import { Logger } from "../utils";
+import { logger } from "cyber-logger";
+
 import { Address } from "../enum";
 import { MessageException } from "../errors";
 
@@ -26,7 +27,7 @@ export class Message {
 
     Object.keys(createdMessage).forEach((key) => {
       if (!createdMessage[key]) {
-        Logger.error(
+        logger.error(
           `Invalid body to create a new message.\nSended value: ${Message.toString(
             createdMessage
           )}`

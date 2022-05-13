@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
+import { logger } from "cyber-logger";
 
 import { Message } from "../model";
 import cache from "../cache/cache";
-import { Logger } from "../utils";
 import messageService from "../services/messageServices";
 import { MessageControllerException } from "../errors";
 
@@ -16,7 +16,7 @@ class MessageController {
 
       return res.status(StatusCodes.CREATED).send();
     } else {
-      Logger.error("Invalid request body");
+      logger.error("Invalid request body");
       throw new MessageControllerException("Invalid request body");
     }
   }

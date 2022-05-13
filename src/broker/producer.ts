@@ -1,6 +1,6 @@
+import { logger } from "cyber-logger";
 import { Kafka, logLevel, Producer } from "kafkajs";
 
-import { Logger } from "../utils";
 import { KafkaException } from "../errors";
 
 class KafkaProducer {
@@ -20,14 +20,14 @@ class KafkaProducer {
 
     this.producer = this.kafka.producer();
 
-    Logger.info("Trying to connect to Kafka broker");
+    logger.info("Trying to connect to Kafka broker");
     this.producer
       .connect()
       .then(() => {
-        Logger.info("Kafka broker is connected!");
+        logger.info("Kafka broker is connected!");
       })
       .catch((err) => {
-        Logger.error(`Could not connect to broker.\n${err}`);
+        logger.error(`Could not connect to broker.\n${err}`);
         throw new KafkaException(`Could not connect to broker.\n${err}`);
       });
   }

@@ -1,8 +1,8 @@
 import express from "express";
 import { config } from "dotenv";
+import { middlewareLogger } from "cyber-logger";
 
 import router from "./routes";
-import { morganMiddleware } from "./utils";
 import kafka from "./broker/producer";
 
 class App {
@@ -17,7 +17,7 @@ class App {
   }
 
   private middlewares(): void {
-    this.app.use(morganMiddleware);
+    this.app.use(middlewareLogger);
     this.app.use(express.json());
     this.app.use(
       express.urlencoded({
